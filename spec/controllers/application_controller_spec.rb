@@ -119,12 +119,12 @@ describe ApplicationController do
       expect(last_response.location).to include("/")
     end
 
-    xit 'does not load /tweets if user not logged in' do
+    it 'does not load /tweets if user not logged in' do
       get '/tweets'
       expect(last_response.location).to include("/login")
     end
 
-    xit 'does load /tweets if user is logged in' do
+    it 'does load /tweets if user is logged in' do
       user = User.create(:username => "becky567", :email => "starz@aol.com", :password => "kittens")
 
 

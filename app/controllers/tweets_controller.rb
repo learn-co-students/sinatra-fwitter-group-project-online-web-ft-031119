@@ -10,15 +10,6 @@ class TweetsController < ApplicationController
 
   end
 
-  get '/homepage' do
-    @current_user = User.find_by_id(session[:user_id])
-    if @current_user
-      erb :'/tweets/homepage'
-    else
-      redirect '/failure'
-    end
-  end
-
   get '/tweets/new' do
     if Helpers.is_logged_in?(session)
       @current_user = User.find_by_id(session[:user_id])
