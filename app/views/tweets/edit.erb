@@ -1,7 +1,13 @@
 <% if Helpers.current_user(session).id == @tweet.user.id %>
-  <form action="/tweets/<%=@tweet.id%>/edit" method="post">
+
+<form action="/tweets/<%=@tweet.id%>/edit" method="post">
+  <div class="new-tweet">
     <input type="hidden" name="_method" value="patch">
       <textarea rows="4" cols="50" name="content"><%=@tweet.content%></textarea>
-    <input id="submit" type="submit" value="Edit Tweet">
-  </form>
+      <div class="tweet-button">
+        <input id="submit" type="submit" value="Edit Tweet">
+      </div>
+    </div>
+</form>
+
 <% end %>

@@ -16,7 +16,11 @@ a{
 }
 
 .username{
-  color: #edd382/* #fc9e4f */
+  color: #edd382;/* #fc9e4f */
+}
+
+.you-say{
+  color: orange; /*#edd382;*/
 }
 
 .intro{
@@ -30,12 +34,12 @@ a{
 }
 
 .left,.right {
-  width: 15vw;
-
+  flex: 1;
 }
 
 .middle{
-  width: 70vw
+  flex: 3;
+  justify-content: center;
 }
 
 .menu-bar{
@@ -79,6 +83,19 @@ a{
   background-color: rgba(111, 255, 233, .3);
 }
 
+.tweet_shell:hover .you-say{
+  color: #edd382;
+}
+
 .tweet_bubble {
   padding: 5px 5px 5px 10px;
+}
+
+.new-tweet{
+    display: flex;
+    flex-direction: column;
+}
+
+.tweet-button{
+  align-self: flex-end;
 }
