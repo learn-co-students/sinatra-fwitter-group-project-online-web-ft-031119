@@ -1,12 +1,24 @@
 <h2>Sign-Up Form</h2>
 
-<form action="/signup" method="post">
-  <label for="username">Username:</label>
-    <input type="text" name="username" id="username"><br>
-  <label for="email">Email:</label>
-    <input type="text" name="email" id="email"><br>
-  <label for="password">Password:</label>
-    <input type="password" name="password" id="password"><br>
-  <input type="submit" value="Sign Up"><br>
-  <a href="/login">Log In</a>
+  <form action="/signup" method="post">
+    <div class="signup">
+      <div class="user-email-pass">
+        <div class="user">
+          <label for="username">Username:</label>
+            <input type="text" name="username" id="username">
+        </div>
+        <div class="email">
+          <label for="email">Email:</label>
+            <input type="text" name="email" id="email">
+        </div>
+        <div class="password">
+          <label for="password">Password:</label>
+            <input type="password" name="password" id="password">
+        </div>
+
+      </div>
+      <div class="tweet-button">
+        <input type="submit" value="Sign Up">
+      </div>
+    </div>
 </form>

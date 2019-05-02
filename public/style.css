@@ -9,6 +9,14 @@ h1,h2,h3 {
 
 label{
   color: white;
+  padding: 12px, 20px;
+  margin: 8px;
+}
+
+input[type=text], input[type=password]{
+  width: 100%;
+  padding: 12px, 20px;
+  margin: 8px;
 }
 
 a{
@@ -31,6 +39,7 @@ a{
 .yielded{
   align-text: center;
   display: flex;
+  justify-content: center;
 }
 
 .left,.right {
@@ -91,9 +100,16 @@ a{
   padding: 5px 5px 5px 10px;
 }
 
-.new-tweet{
-    display: flex;
-    flex-direction: column;
+.new-tweet, .login, .signup{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-pass{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
 }
 
 .tweet-button{
