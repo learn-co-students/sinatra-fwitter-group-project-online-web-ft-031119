@@ -5,6 +5,20 @@
     <link rel="stylesheet" href="/style.css">
   </head>
   <body>
+    <div class="menu-bar">
+      <% path = request.path_info %>
+      <% if @current_user %>
+        <a href="/users/<%=@current_user.slug%>" class="left-side">Home</a>
+        <% if path != '/new' %><a href="/tweets/new" class="left-side">New Fweet</a><% end %>
+        <% if path != '/tweets' %><a href="/tweets" class="left-side">See it all</a><% end %>
+        <a href="/logout" class="right-side">Log Out</a>
+      <% else %>
+        <a href="/" class="left-side">Home</a>
+        <% if path != '/login' %><a href="/login" class="right-side">Log In</a><% end %>
+        <% if path != '/signup' %><a href="/signup"class="right-side">Sign Up</a><% end %>
+      <% end %>
+
+    </div>
 
     <div class="container">
       <div class="intro">
@@ -12,7 +26,7 @@
         <% if @current_user %>
           <% user_name = @current_user.username + ", "%>
         <% end %>
-        <h1><%=user_name%>Welcome to Fwitter!</h1>
+        <h1><span class="username"><%=user_name%></span>Welcome to Fwitter!</h1>
         <h2>Home of the Fweet.</h2>
       </div>
 
@@ -26,18 +40,6 @@
 
       <br><br>
 
-      <div class="links">
-        <% path = request.path_info %>
-        <% if @current_user %>
-          <% if path != '/new' %><a href="/tweets/new">New Fweet</a><% end %>
-          <a href="/users/<%=@current_user.slug%>">Home</a>
-          <a href="/logout">Log Out</a>
-        <% else %>
-          <% if path != '/login' && path != '/signup' %><a href="/login">Log In</a><% end %>
-          <% if path != '/login' && path != '/signup' %><a href="/signup">Sign Up</a><% end %>
-        <% end %>
-        <% if path != '/' %><a href="/">See it all</a><% end %>
-      </div>
     </div>
 
   </body>

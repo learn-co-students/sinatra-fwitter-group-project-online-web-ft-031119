@@ -1,8 +1,10 @@
 
 <h2><%=@tweet.user.username%> said: </h2>
-<div class="tweet_bubble">
-  <%=@tweet.content%>
-  <a href="/tweets/<%=@tweet.id%>/edit">Edit Tweet</a>
+<div class="tweet_shell">
+  <div class="tweet_bubble">
+    <%=@tweet.content%>
+    <a href="/tweets/<%=@tweet.id%>/edit">Edit Tweet</a>
+  </div>
 </div>
 
 <form action="/tweets/<%=@tweet.id%>/delete" method="post">

@@ -1,7 +1,11 @@
 <h3>Welcome, Current Fweets</h3>
 <% Tweet.all.each do |t| %>
-  <div class="tweet_bubble">
-    <label for="tweet"><%=t.user.username%> Says: </label>
-      <a id="tweet" href="/tweets/<%=t.id%>"><%=t.content%></a><br>
+  <div class="tweet_shell">
+    <a id="tweet" href="/tweets/<%=t.id%>">
+      <div class="tweet_bubble">
+        <%=t.user.username%> Says: <%=t.content%>
+      </div>
+    </a>
   </div>
+
 <% end %>

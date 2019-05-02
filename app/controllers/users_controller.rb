@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
+    @current_user = User.find_by_id(params[:user_id])
     if Helpers.is_logged_in?(session)
       redirect '/tweets'
     end
@@ -17,10 +18,6 @@ class UsersController < ApplicationController
       redirect '/tweets'
     end
     erb :'/users/signup'
-  end
-
-  get '/failure' do
-    erb :'/users/failure'
   end
 
   get '/logout' do
@@ -50,7 +47,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect '/tweets'
     else
-      redirect '/failure'
+      redirect '/login'
     end
   end
 
