@@ -1,13 +1,11 @@
-<h2><%=@tweet.user.username%> said: </h2>
-<p><%=@tweet.content%>
-<% if  Helpers.is_logged_in?(session) && Helpers.current_user(session).id == @tweet.user.id%>
-  <div class="tweet_bubble">
-      <a href="/tweets/<%=@tweet.id%>/edit">Edit</a></p>
-  </div>
-</p>
 
-  <form action="/tweets/<%=@tweet.id%>/delete" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="delete">
-  </form>
-<% end %>
+<h2><%=@tweet.user.username%> said: </h2>
+<div class="tweet_bubble">
+  <%=@tweet.content%>
+  <a href="/tweets/<%=@tweet.id%>/edit">Edit Tweet</a>
+</div>
+
+<form action="/tweets/<%=@tweet.id%>/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input id="Delete Tweet" type="submit" value="Delete Tweet">
+</form>

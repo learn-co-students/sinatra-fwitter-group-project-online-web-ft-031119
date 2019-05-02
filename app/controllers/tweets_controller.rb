@@ -1,5 +1,15 @@
 class TweetsController < ApplicationController
 
+  get '/tweets' do
+    if Helpers.is_logged_in?(session)
+      @current_user = User.find_by_id(session[:user_id])
+      erb :index
+    else
+      redirect '/login'
+    end
+
+  end
+
   get '/homepage' do
     @current_user = User.find_by_id(session[:user_id])
     if @current_user
@@ -10,21 +20,36 @@ class TweetsController < ApplicationController
   end
 
   get '/tweets/new' do
-    @current_user = User.find_by_id(session[:user_id])
-    erb :'/tweets/new'
+    if Helpers.is_logged_in?(session)
+      @current_user = User.find_by_id(session[:user_id])
+      erb :'/tweets/new'
+    else
+      redirect "/login"
+    end
+
   end
 
   get '/tweets/:id' do
-    @current_user = User.find_by_id(session[:user_id])
-    @tweet = Tweet.find_by_id(params[:id])
-    erb :'/tweets/show'
+    if Helpers.is_logged_in?(session)
+      @current_user = User.find_by_id(session[:user_id])
+      @tweet = Tweet.find_by_id(params[:id])
+      erb :'/tweets/show'
+    else
+      redirect "/login"
+    end
+
   end
 
   post '/tweets' do
-    @current_user = User.find_by_id(session[:user_id])
-    @tweet = Tweet.create(content: params[:content])
-    @current_user.tweets << @tweet
-    redirect "/tweets/#{@tweet.id}"
+    if !params[:content].empty?
+      @current_user = User.find_by_id(session[:user_id])
+      @tweet = Tweet.create(content: params[:content])
+      @current_user.tweets << @tweet
+      redirect "/tweets/#{@tweet.id}"
+    else
+      redirect "/tweets/new"
+    end
+
   end
 
   get '/tweets/:id/edit' do
@@ -33,21 +58,31 @@ class TweetsController < ApplicationController
     if Helpers.is_logged_in?(session) && Helpers.current_user(session).id == @tweet.user.id
       erb :'/tweets/edit'
     else
-      redirect '/failure'
+      redirect '/login'
     end
 
   end
 
   patch '/tweets/:id/edit' do
-    @tweet = Tweet.find_by_id(params[:id])
-    @tweet.update(params[:tweet])
-    redirect "/tweets/#{@tweet.id}"
+    if !params[:tweet][:content].empty?
+      @tweet = Tweet.find_by_id(params[:id])
+      @tweet.update(params[:tweet])
+      redirect "/tweets/#{@tweet.id}"
+    else
+      redirect "/tweets/#{@tweet.id}/edit"
+    end
+
   end
 
   delete '/tweets/:id/delete' do
-    @tweet = Tweet.find_by_id(params[:id])
-    @tweet.delete
-    redirect '/homepage'
+    if Helpers.current_user(session) == Tweet.find_by_id(params[:id]).user
+      @current_user = User.find_by_id(session[:user_id])
+      @tweet = Tweet.find_by_id(params[:id])
+      @tweet.delete
+      redirect "/users/#{@current_user.slug}"
+    else
+      redirect "/tweets/#{params[:id]}"
+    end
   end
 
 end
