@@ -30,7 +30,7 @@ class TweetsController < ApplicationController
   get '/tweets/:id/edit' do
     @current_user = User.find_by_id(session[:user_id])
     @tweet = Tweet.find_by_id(params[:id])
-    if @current_user == @tweet.user.id
+    if Helpers.is_logged_in?(session) && Helpers.current_user(session).id == @tweet.user.id
       erb :'/tweets/edit'
     else
       redirect '/failure'

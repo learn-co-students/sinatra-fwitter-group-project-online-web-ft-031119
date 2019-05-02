@@ -2,32 +2,42 @@
 <html>
   <head>
     <title>Fwitter</title>
+    <link rel="stylesheet" href="/style.css">
   </head>
   <body>
 
     <div class="container">
-      <% user_name = "" %>
-      <% if @current_user %>
-        <% user_name = @current_user.username %>
-      <% end %>
-      <h1>Welcome <%=user_name+" "%> to Fwitter!</h1>
-      <h2>Home of the Fweet.</h2>
+      <div class="intro">
+        <% user_name = "" %>
+        <% if @current_user %>
+          <% user_name = @current_user.username +", "%>
+        <% end %>
+        <h1><%=user_name%>Welcome to Fwitter!</h1>
+        <h2>Home of the Fweet.</h2>
+      </div>
 
-      <%= yield %>
+      <div class="yielded">
+        <div class="left"></div>
+        <div class="middle">
+          <%= yield %>
+        </div>
+        <div class="right"></div>
+      </div>
 
       <br><br>
 
-      <% path = request.path_info %>
-
-      <% if @current_user %>
-        <% if path != '/new' %><a href="/tweets/new">New Fweet</a><% end %>
-        <% if path != '/homepage' %><a href="/homepage">Homepage</a><% end %>
-        <a href="/logout">Log Out</a>
-      <% else %>
-        <% if path != '/login' && path != '/signup' %><a href="/login">Log In</a><% end %>
-        <% if path != '/login' && path != '/signup' %><a href="/signup">Sign Up</a><% end %>
-      <% end %>
-      <% if path != '/' %><a href="/">See it all</a><% end %>
+      <div class="links">
+        <% path = request.path_info %>
+        <% if @current_user %>
+          <% if path != '/new' %><a href="/tweets/new">New Fweet</a><% end %>
+          <% if path != '/homepage' %><a href="/homepage">Homepage</a><% end %>
+          <a href="/logout">Log Out</a>
+        <% else %>
+          <% if path != '/login' && path != '/signup' %><a href="/login">Log In</a><% end %>
+          <% if path != '/login' && path != '/signup' %><a href="/signup">Sign Up</a><% end %>
+        <% end %>
+        <% if path != '/' %><a href="/">See it all</a><% end %>
+      </div>
     </div>
 
   </body>

@@ -1,7 +1,11 @@
 <h2><%=@tweet.user.username%> said: </h2>
-<a href="/tweets/<%=@tweet.id%>/edit"><p><%=@tweet.content%></p></a>
+<p><%=@tweet.content%>
+<% if  Helpers.is_logged_in?(session) && Helpers.current_user(session).id == @tweet.user.id%>
+  <div class="tweet_bubble">
+      <a href="/tweets/<%=@tweet.id%>/edit">Edit</a></p>
+  </div>
+</p>
 
-<% if session[:user_id] == @tweet.user.id %>
   <form action="/tweets/<%=@tweet.id%>/delete" method="post">
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="delete">

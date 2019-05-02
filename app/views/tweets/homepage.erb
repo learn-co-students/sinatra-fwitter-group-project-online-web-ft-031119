@@ -1,7 +1,5 @@
-<% if Helpers.is_logged_in?(session) %>
-  <h3>Current Fweets</h3>
-  <% @current_user.tweets.each do |t| %>
-    <label for="tweet">#: </label>
-     <a id="tweet" href="/tweets/<%=t.id%>"><%=t.content%></a><br>
-  <% end %>
+<h3>Current Fweets</h3>
+<% @current_user.tweets.each do |t| %>
+  <label for="tweet">#: </label>
+   <a id="tweet" href="/tweets/<%=t.id%>"><%=t.content%></a><br>
 <% end %>

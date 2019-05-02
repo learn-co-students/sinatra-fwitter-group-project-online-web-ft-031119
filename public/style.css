@@ -1,0 +1,49 @@
+body {
+  padding: 10px;
+  background-color: #0db7e8;
+}
+
+h1,h2,h3 {
+  color: white;
+}
+
+label{
+  color: white;
+}
+
+a{
+  color: white;
+  /* color: #022f3c; */
+}
+
+.intro{
+  text-align: center;
+  color: white;
+}
+
+.yielded{
+  align-text: center;
+  display: flex;
+}
+
+.left,.right {
+  width: 15vw;
+
+}
+
+.middle{
+  width: 70vw
+}
+
+.tweet_bubble{
+  margin: 5px;
+  padding: 10px;
+  background-color: rgba(2, 47, 60, 0.3);
+}
+
+.links{
+  text-align: center;
+  /* color: #022f3c; */
+}
+
+.
