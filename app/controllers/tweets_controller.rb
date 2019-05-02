@@ -55,7 +55,7 @@ class TweetsController < ApplicationController
   end
 
   patch '/tweets/:id/edit' do
-    if !params[:tweet][:content].empty?
+    if !params[:tweet].empty?
       @tweet = Tweet.find_by_id(params[:id])
       @tweet.update(params[:tweet])
       redirect "/tweets/#{@tweet.id}"

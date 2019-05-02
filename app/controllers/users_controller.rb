@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   get '/users/:slug' do
-    @current_user = User.find_by_slug(params[:slug])
+    @current_user = Helpers.current_user(session)
     erb :'/users/user_show_page'
   end
 
