@@ -1,0 +1,84 @@
+body {
+  padding: 10px;
+  background-color: #0db7e8;
+}
+
+h1,h2,h3 {
+  color: white;
+}
+
+label{
+  color: white;
+}
+
+a{
+  color: white;
+}
+
+.username{
+  color: #edd382/* #fc9e4f */
+}
+
+.intro{
+  text-align: center;
+  color: white;
+}
+
+.yielded{
+  align-text: center;
+  display: flex;
+}
+
+.left,.right {
+  width: 15vw;
+
+}
+
+.middle{
+  width: 70vw
+}
+
+.menu-bar{
+  text-align: center;
+  background-color: rgba(2, 47, 60, .7);
+  overflow: hidden;
+}
+
+.menu-bar a{
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.menu-bar a:hover{
+  background-color: rgba(111, 255, 233, .7);
+}
+
+.menu-bar .left-side{
+  float: left;
+}
+
+.menu-bar .right-side{
+  float: right;
+}
+
+.tweet_shell{
+  margin: 2px;
+  padding: 2px;
+  background-color: rgba(2, 47, 60, 0.3);
+  border-radius: 30px;
+}
+
+.tweet_shell a{
+  color: white;
+  text-decoration: none;
+}
+
+.tweet_shell:hover {
+  background-color: rgba(111, 255, 233, .3);
+}
+
+.tweet_bubble {
+  padding: 5px 5px 5px 10px;
+}

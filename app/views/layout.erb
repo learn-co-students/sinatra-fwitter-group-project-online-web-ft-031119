@@ -2,13 +2,44 @@
 <html>
   <head>
     <title>Fwitter</title>
+    <link rel="stylesheet" href="/style.css">
   </head>
   <body>
+    <div class="menu-bar">
+      <% path = request.path_info %>
+      <% if @current_user %>
+        <a href="/users/<%=@current_user.slug%>" class="left-side">Home</a>
+        <% if path != '/new' %><a href="/tweets/new" class="left-side">New Fweet</a><% end %>
+        <% if path != '/tweets' %><a href="/tweets" class="left-side">See it all</a><% end %>
+        <a href="/logout" class="right-side">Log Out</a>
+      <% else %>
+        <a href="/" class="left-side">Home</a>
+        <% if path != '/login' %><a href="/login" class="right-side">Log In</a><% end %>
+        <% if path != '/signup' %><a href="/signup"class="right-side">Sign Up</a><% end %>
+      <% end %>
+
+    </div>
 
     <div class="container">
-      <h1>Welcome to Fwitter!</h1>
-      <h2>This is located in layout.erb!</h2>
-      <h2>Don't forget to <strong>yield</strong> your views!</h2>
+      <div class="intro">
+        <% user_name = "" %>
+        <% if @current_user %>
+          <% user_name = @current_user.username + ", "%>
+        <% end %>
+        <h1><span class="username"><%=user_name%></span>Welcome to Fwitter!</h1>
+        <h2>Home of the Fweet.</h2>
+      </div>
+
+      <div class="yielded">
+        <div class="left"></div>
+        <div class="middle">
+          <%= yield %>
+        </div>
+        <div class="right"></div>
+      </div>
+
+      <br><br>
+
     </div>
 
   </body>
